@@ -74,18 +74,3 @@ lo    In  IP 127.0.0.1 > 127.0.0.1: ICMP echo reply, id 30462, seq 3, length 64
 
 > [!NOTE]  
 > 127.0.0.1 is the loopback (localhost) address, so ping round‑trip times are very short.
-
-### `tcpdump`
-```
-tcpdump version 4.99.4
-libpcap version 1.10.4 (with TPACKET_V3)
-OpenSSL 3.0.13 30 Jan 2024
-Usage: tcpdump [-AbdDefhHIJKlLnNOpqStuUvxX#] [ -B size ] [ -c count ] [--count]
-		[ -C file_size ] [ -E algo:secret ] [ -F file ] [ -G seconds ]
-		[ -i interface ] [ --immediate-mode ] [ -j tstamptype ]
-		[ -M secret ] [ --number ] [ --print ] [ -Q in|out|inout ]
-		[ -r file ] [ -s snaplen ] [ -T type ] [ --version ]
-		[ -V file ] [ -w file ] [ -W filecount ] [ -y datalinktype ]
-		[ --time-stamp-precision precision ] [ --micro ] [ --nano ]
-		[ -z postrotate-command ] [ -Z user ] [ expression ]
-```
