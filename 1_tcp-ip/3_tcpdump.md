@@ -1,5 +1,20 @@
 # tcpdump
 
+## description
+
+Tcpdump is a command-line packet analyzer that captures and displays network packets in real time by leveraging the libpcap library. You can apply capture filters (e.g. `icmp`, IP addresses, ports) to focus on specific traffic. Each output line shows:
+- interface and direction (`In`/`Out`)
+- protocol (IP, ICMP, TCP/UDP, etc.)
+- source and destination addresses
+- packet-specific details (type, id, seq, length, ports)
+
+Common options:
+- `-i <interface>`: listen on a given interface (`any` for all)
+- `-n`: numeric output only (no DNS/port name resolution)
+- `-t`: omit timestamps
+- `-c <count>`: stop after capturing a set number of packets
+- `-v` / `-vv`: increase verbosity for more header details
+
 ## example
 1. `sudo tcpdump -tn -i any icmp`(tab A)
 2. open another shell tab(tab B)
