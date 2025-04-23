@@ -1,7 +1,7 @@
 # network-linux
 
 This project is my reference for network-related topics.
-Using Linux commands, I am creating a virtual network on my local PC (Raspberry Pi) step by step.
+Using Linux commands, Creating a virtual network on my local PC (Raspberry Pi) step by step.
 
 ## References
 
