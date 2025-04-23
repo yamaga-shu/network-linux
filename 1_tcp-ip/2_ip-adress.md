@@ -29,7 +29,16 @@ $ ip address show
        valid_lft forever preferred_lft forever
 ```
 
-### ip address
+Running `ip address show` lists all network interfaces and their addresses.  
+The `inet` lines display each interface’s IPv4 address in CIDR form (`address/prefix-length`),  
+along with optional fields like the broadcast address (`brd`) and the scope (`scope`).  
+For example:  
+```
+inet 100.64.1.24/22 metric 600 brd 100.64.3.255 scope global wlan0
+```  
+means interface `wlan0` has IPv4 address `100.64.1.24/22`, broadcast `100.64.3.255`, metric 600, and global scope. 
+
+### `ip address`
 ```
 Usage: ip address {add|change|replace} IFADDR dev IFNAME [ LIFETIME ]
                                                       [ CONFFLAG-LIST ]

@@ -21,7 +21,7 @@ An IP address is unique on the Internet, meaning there are no duplicate IP addre
 > Only global IP addresses should be unique on the Internet.
 > Other IP addresses, such as private IPs used in closed networks (home, organization, etc.), may be duplicated.
 
-## ping
+### `ping`
 ```
 Usage
   ping [options] <destination>
