@@ -1,5 +1,18 @@
 # ip address
 
+## description
+
+The `ip address` command (also aliased `ip addr`) is part of the iproute2 suite for viewing and configuring IP addresses and related properties on network interfaces via the Linux kernel’s Netlink interface. When run without subcommands, it lists all interfaces and their configured addresses and associated details:
+- link/ entry: link-layer information (MAC address, broadcast).
+- inet: IPv4 address in CIDR notation, with optional fields like broadcast (`brd`), scope (`host`/`link`/`global`), and routing metric.
+- inet6: IPv6 address in CIDR notation, including scope and flags (e.g., `dynamic`, `mngtmpaddr`).
+
+Common operations:
+- `ip address show [dev <interface>]`: display all or per-interface addresses.
+- `ip address add <address>/<prefix> dev <interface>`: assign a new IP address.
+- `ip address change|replace <address>/<prefix> dev <interface>`: modify an existing address.
+- `ip address del <address>/<prefix> dev <interface>`: remove an IP address.
+
 ## example
 ```bash
 $ ip address show
