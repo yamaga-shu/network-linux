@@ -24,3 +24,5 @@ default via 100.64.1.1 dev wlan0 proto dhcp src 100.64.1.24 metric 600
 192.168.49.0/24 dev br-16e6790e47fd proto kernel scope link src 192.168.49.1 linkdown 
 208.67.222.222 via 100.64.1.1 dev wlan0 proto dhcp src 100.64.1.24 metric 600
 ```
+
+[Network Configration Diagram](./network.drawio.png)
