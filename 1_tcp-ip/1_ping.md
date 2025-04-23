@@ -1,5 +1,9 @@
 # ping
 
+## description
+
+Ping is a command-line network diagnostic tool that sends ICMP Echo Request packets to a target host and waits for Echo Reply responses. It reports each packet’s round-trip time, TTL, and sequence number, and summarizes packet loss and overall latency statistics.
+
 ## example
 ```bash
 $ ping -c 3 8.8.8.8
