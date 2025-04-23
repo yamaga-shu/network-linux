@@ -1,5 +1,6 @@
 # ping
 
+## example
 ```bash
 $ ping -c 3 8.8.8.8
 PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
@@ -12,7 +13,7 @@ PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 rtt min/avg/max/mdev = 4.692/10.396/18.886/6.120 ms
 ```
 
-## IP Address
+### IP Address
 `8.8.8.8` is an IP address in the command above. It is one of the identifiers used to transfer information via IP (Internet Protocol). IP is a fundamental protocol of the Internet.
 
 An IP address is unique on the Internet, meaning there are no duplicate IP addresses. Therefore, `8.8.8.8` represents Google's public DNS server.

@@ -1,6 +1,6 @@
 # ip address
 
-## show
+## example
 ```bash
 $ ip address show
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
