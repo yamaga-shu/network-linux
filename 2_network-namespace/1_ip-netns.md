@@ -29,5 +29,5 @@ $
 
 3. Delete Network Namespace
 ```
-$ sudo ip netns delete helloworld 
+$ sudo ip netns delete helloworld
 ```
