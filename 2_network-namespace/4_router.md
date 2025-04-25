@@ -47,6 +47,7 @@ $ sudo ip netns exec ns2 ip address add 198.51.100.1/24 dev ns2-veth0
 ```
 
 6. Check the connection of each namespace to the router
+
 `ns1 <-> router`
 ```
 $ sudo ip netns exec ns1 ping -c 3 192.0.2.254 -I 192.0.2.1
@@ -83,6 +84,7 @@ PING 198.51.100.1 (198.51.100.1) from 192.0.2.1 : 56(84) bytes of data.
 ```
 
 8. Add default router to each namespace
+
 `Before`
 ```
 $ sudo ip netns exec ns1 ip route show
