@@ -124,4 +124,5 @@ rtt min/avg/max/mdev = 0.029/0.046/0.061/0.013 ms
 
 > [!NOTE]  
 > The time you failed to transit, you may run this command to set karnel parameter.
+> 
 > `sudo ip netns exec router sysctl net.ipv4.ip_forward=1`
