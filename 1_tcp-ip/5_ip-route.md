@@ -25,4 +25,4 @@ default via 100.64.1.1 dev wlan0 proto dhcp src 100.64.1.24 metric 600
 208.67.222.222 via 100.64.1.1 dev wlan0 proto dhcp src 100.64.1.24 metric 600
 ```
 
-![Network Configration Diagram](./network.drawio.png)
+![Network Configration Diagram](./assets/network.drawio.png)
