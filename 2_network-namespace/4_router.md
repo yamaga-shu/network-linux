@@ -83,7 +83,7 @@ PING 198.51.100.1 (198.51.100.1) from 192.0.2.1 : 56(84) bytes of data.
 3 packets transmitted, 0 received, 100% packet loss, time 2070ms
 ```
 
-8. Add default router to each namespace
+8. Add default route to each namespace
 
 `Before`
 ```
