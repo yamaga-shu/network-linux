@@ -64,25 +64,49 @@ $ sudo ip netns exec ns2 ip address add 198.51.100.1/24 dev ns2-veth0
 `ns1 <-> router1`
 ```
 $ sudo ip netns exec ns1 ping -c 3 192.0.2.254 -I 192.0.2.1
-(result here)
+PING 192.0.2.254 (192.0.2.254) from 192.0.2.1 : 56(84) bytes of data.
+64 bytes from 192.0.2.254: icmp_seq=1 ttl=64 time=0.074 ms
+64 bytes from 192.0.2.254: icmp_seq=2 ttl=64 time=0.040 ms
+64 bytes from 192.0.2.254: icmp_seq=3 ttl=64 time=0.031 ms
+
+--- 192.0.2.254 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2079ms
+rtt min/avg/max/mdev = 0.031/0.048/0.074/0.018 ms
 ```
 
 `router1 <-> router2`
 ```
 $ sudo ip netns exec router1 ping -c 3 203.0.113.2 -I 203.0.113.1
-(result here)
+PING 203.0.113.2 (203.0.113.2) from 203.0.113.1 : 56(84) bytes of data.
+64 bytes from 203.0.113.2: icmp_seq=1 ttl=64 time=0.077 ms
+64 bytes from 203.0.113.2: icmp_seq=2 ttl=64 time=0.042 ms
+64 bytes from 203.0.113.2: icmp_seq=3 ttl=64 time=0.044 ms
+
+--- 203.0.113.2 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2078ms
+rtt min/avg/max/mdev = 0.042/0.054/0.077/0.016 ms
 ```
 
 `router2 <-> ns2`
 ```
 $ sudo ip netns exec router2 ping -c 3 198.51.100.1 -I 198.51.100.254
-(result here)
+PING 198.51.100.1 (198.51.100.1) from 198.51.100.254 : 56(84) bytes of data.
+64 bytes from 198.51.100.1: icmp_seq=1 ttl=64 time=0.069 ms
+64 bytes from 198.51.100.1: icmp_seq=2 ttl=64 time=0.036 ms
+64 bytes from 198.51.100.1: icmp_seq=3 ttl=64 time=0.048 ms
+
+--- 198.51.100.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2041ms
+rtt min/avg/max/mdev = 0.036/0.051/0.069/0.013 ms
 ```
 
 7. Check the connection of each namespace through the router (failed)
 ```
 $ sudo ip netns exec ns1 ping -c 3 198.51.100.1 -I 192.0.2.1
-(result here)
+PING 198.51.100.1 (198.51.100.1) from 192.0.2.1 : 56(84) bytes of data.
+
+--- 198.51.100.1 ping statistics ---
+3 packets transmitted, 0 received, 100% packet loss, time 2031ms
 ```
 
 8. Add default route to each namespace
@@ -100,5 +124,12 @@ $ sudo ip netns exec router2 ip route add 192.0.2.0/24 via 203.0.113.1
 10. Check the connection of each namespace through the router
 ```
 $ sudo ip netns exec ns1 ping -c 3 198.51.100.1 -I 192.0.2.1
-(result here)
+PING 198.51.100.1 (198.51.100.1) from 192.0.2.1 : 56(84) bytes of data.
+64 bytes from 198.51.100.1: icmp_seq=1 ttl=62 time=0.073 ms
+64 bytes from 198.51.100.1: icmp_seq=2 ttl=62 time=0.052 ms
+64 bytes from 198.51.100.1: icmp_seq=3 ttl=62 time=0.032 ms
+
+--- 198.51.100.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2080ms
+rtt min/avg/max/mdev = 0.032/0.052/0.073/0.016 ms
 ```
