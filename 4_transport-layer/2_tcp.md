@@ -55,7 +55,7 @@ tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
 listening on lo, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 ```
 
-3. Create Client
+3. Create Client(Three-way Handshake)
 
 `tabC`
 ```
@@ -72,7 +72,6 @@ Connection received on 127.0.0.1 44900
 `tabB`
 ```
 $ sudo tcpdump -i lo -tnlA "tcp and port 54321"
-
 ...
 
 IP 127.0.0.1.44900 > 127.0.0.1.54321: Flags [S], seq 4161610494, win 65495, options [mss 65495,sackOK,TS val 293076160 ecr 0,nop,wscale 7], length 0
@@ -84,4 +83,33 @@ E..<..@.@.<..........1.d......"......0.........
 IP 127.0.0.1.44900 > 127.0.0.1.54321: Flags [.], ack 1, win 512, options [nop,nop,TS val 293076160 ecr 293076160], length 0
 E..4.K@.@.%w.........d.1.."..........(.....
 .w...w..
+```
+
+4. Send message to Server from Client
+
+`tabC`
+```
+$ nc 127.0.0.1 54321
+Hello, TCP!
+```
+
+`tabA`
+```
+$ nc -lnv 127.0.01 54321
+...
+
+Hello, TCP!
+```
+
+`tabB`
+```
+$ sudo tcpdump -i lo -tnlA "tcp and port 54321"
+...
+
+P 127.0.0.1.44900 > 127.0.0.1.54321: Flags [P.], seq 1:13, ack 1, win 512, options [nop,nop,TS val 295875940 ecr 293076160], length 12
+E..@.L@.@.%j.........d.1.."..........4.....
+...d.w..Hello, TCP!
+
+IP 127.0.0.1.54321 > 127.0.0.1.44900: Flags [.], ack 13, win 512, options [nop,nop,TS val 295875940 ecr 295875940], length 0
+E..4..@.@............1.d......#......(.....
 ```
