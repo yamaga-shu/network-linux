@@ -21,6 +21,8 @@ TCP’s control flags are carried in the 8-bit Flags field of the TCP header, im
 
 ### three-way handshake
 
+![Three-way Handshake](./assets/tcp-therrway-handshake.drawio.png)
+
 When a TCP endpoint initiates a connection, it performs a three-step exchange using the SYN and ACK control bits:
 
 1. Client → Server: SYN=1, ACK=0, seq=C_ISN  
