@@ -10,7 +10,7 @@ TCP’s control flags are carried in the 8-bit Flags field of the TCP header, im
 
 | Data Offset | Reserved | NS | CWR | ECE | URG | ACK | PSH | RST | SYN | FIN |
 | ----------- | -------- | -- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 4 bits | 3 bits | 1 bit | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
+|   4 bits    |     3    |  1 |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |
 
 - `SYN` (Synchronize): signals the start of a new connection and carries the sender’s initial sequence number.  
 - `ACK` (Acknowledgment): indicates that the acknowledgment field is valid and confirms receipt of data or control segments.  
