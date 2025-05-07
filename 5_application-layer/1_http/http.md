@@ -2,6 +2,22 @@
 
 ## descriptions
 
+HTTP (Hypertext Transfer Protocol) is the application-layer protocol underlying the World Wide Web. It follows a client–server model: a client (such as a web browser) sends a request—consisting of a request-line (method, URI, version), headers, and optional body—to a server, which then returns a response with a status-line (version, status code, reason phrase), headers, and optional body. 
+
+Key features:
+- Common methods:  
+  - GET (retrieve resource)  
+  - POST (submit data)  
+  - PUT (update resource)  
+  - DELETE (remove resource)  
+  - HEAD (headers only)  
+  - OPTIONS (query available methods)  
+- Status codes grouped by class:  
+  - 1xx (informational), 2xx (success), 3xx (redirection), 4xx (client error), 5xx (server error)  
+- Statelessness: each request is independent; state (sessions, authentication) is managed via cookies or tokens  
+- Evolution:  
+  - HTTP/1.1 added persistent connections and chunked transfer encoding  
+  - HTTP/2 introduced multiplexing, header compression, and binary framing for performance
 
 ## example
 
