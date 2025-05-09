@@ -20,8 +20,8 @@ DHCP (Dynamic Host Configuration Protocol) is an application‐layer protocol th
 ![Logical Diagram](./assets/dhcp-logical.drawio.png)
 
 1. Create Network
-```
-$ sudo ip --all netns delete 
+```bash
+$ sudo ip --all netns delete
 $ sudo ip netns add server
 $ sudo ip netns add client
 $ sudo ip link add s-veth0 type veth peer name c-veth0
@@ -33,7 +33,7 @@ $ sudo ip netns exec server ip address add 192.0.2.254/24 dev s-veth0
 ```
 
 2. Launch DHCP Server
-```
+```bash
 $ sudo ip netns exec server dnsmasq \
 --dhcp-range=192.0.2.100,192.0.2.200,255.255.255.0 \
 --interface=s-veth0 \
@@ -48,7 +48,7 @@ dnsmasq-dhcp: DHCP, IP range 192.0.2.100 -- 192.0.2.200, lease time 1h
 3. Configure ip address to Client
 
 `client`
-```
+```bash
 $ sudo ip netns exec client dhclient -d c-veth0
 Internet Systems Consortium DHCP Client 4.4.3-P1
 Copyright 2004-2022 Internet Systems Consortium.
@@ -69,25 +69,25 @@ bound to 192.0.2.105 -- renewal in 1707 seconds.
 ```
 
 `server`
-```
+```bash
 $ sudo ip netns exec server dnsmasq --dhcp-range=192.0.2.100,192.0.2.200,255.255.255.0 --interface=s-veth0 --port 0 --no-resolv --no-daemon
 ...
 
-dnsmasq-dhcp: DHCPDISCOVER(s-veth0) 16:9b:04:7b:98:89 
-dnsmasq-dhcp: DHCPOFFER(s-veth0) 192.0.2.105 16:9b:04:7b:98:89 
-dnsmasq-dhcp: DHCPDISCOVER(s-veth0) 16:9b:04:7b:98:89 
-dnsmasq-dhcp: DHCPOFFER(s-veth0) 192.0.2.105 16:9b:04:7b:98:89 
-dnsmasq-dhcp: DHCPREQUEST(s-veth0) 192.0.2.105 16:9b:04:7b:98:89 
+dnsmasq-dhcp: DHCPDISCOVER(s-veth0) 16:9b:04:7b:98:89
+dnsmasq-dhcp: DHCPOFFER(s-veth0) 192.0.2.105 16:9b:04:7b:98:89
+dnsmasq-dhcp: DHCPDISCOVER(s-veth0) 16:9b:04:7b:98:89
+dnsmasq-dhcp: DHCPOFFER(s-veth0) 192.0.2.105 16:9b:04:7b:98:89
+dnsmasq-dhcp: DHCPREQUEST(s-veth0) 192.0.2.105 16:9b:04:7b:98:89
 dnsmasq-dhcp: DHCPACK(s-veth0) 192.0.2.105 16:9b:04:7b:98:89 raspberrypi-1
 ```
 
 4. Check client Address and Route
-```
+```bash
 $ sudo ip netns exec client ip address show | grep "inet"
     inet 192.0.2.105/24 brd 192.0.2.255 scope global dynamic c-veth0
     inet6 fe80::149b:4ff:fe7b:9889/64 scope link
 
 $ sudo ip netns exec client ip route show
-default via 192.0.2.254 dev c-veth0 
+default via 192.0.2.254 dev c-veth0
 192.0.2.0/24 dev c-veth0 proto kernel scope link src 192.0.2.105
 ```

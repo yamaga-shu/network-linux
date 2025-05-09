@@ -8,10 +8,10 @@ User Datagram Protocol (UDP) is a connectionless, unreliable protocol operating 
 
 Netcat (`nc`) is a lightweight command-line utility for reading from and writing to network connections using TCP or UDP. It can act as either a client (connecting to a remote host) or a server (listening for inbound connections). In the examples above we use:
 
-- `-u`: use UDP instead of the default TCP  
-- `-l`: listen for an incoming connection (server mode)  
-- `-n`: skip DNS resolution; use numeric IP addresses only  
-- `-v`: verbose output, showing connection and packet details  
+- `-u`: use UDP instead of the default TCP
+- `-l`: listen for an incoming connection (server mode)
+- `-n`: skip DNS resolution; use numeric IP addresses only
+- `-v`: verbose output, showing connection and packet details
 
 Here, the server runs `nc -ulnv <host> <port>` to listen for UDP datagrams, and the client sends messages with `nc -u <host> <port>`.
 
@@ -20,7 +20,7 @@ Here, the server runs `nc -ulnv <host> <port>` to listen for UDP datagrams, and 
 1. Create Server
 
 `tabA`
-```
+```bash
 $ nc -ulnv 127.0.0.1 54321
 Bound on 127.0.0.1 54321
 ```
@@ -28,14 +28,14 @@ Bound on 127.0.0.1 54321
 2. Create Client
 
 `tabB`
-```
+```bash
 $ nc -u 127.0.0.1 54321
 ```
 
 3. Prepare Transport Capturing
 
 `tabC`
-```
+```bash
 $ sudo tcpdump -i lo -tnlA "udp and port 54321"
 tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
 listening on lo, link-type EN10MB (Ethernet), snapshot length 262144 bytes
@@ -44,13 +44,13 @@ listening on lo, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 4. Send message to Server from Client
 
 `tabB`
-```
+```bash
 $ nc -u 127.0.0.1 54321
 Hello, World!
 ```
 
 `tabA`
-```
+```bash
 $ nc -ulnv 127.0.0.1 54321
 Bound on 127.0.0.1 54321
 Connection received on 127.0.0.1 50060
@@ -58,7 +58,7 @@ Hello, World!
 ```
 
 `tabC`
-```
+```bash
 $ sudo tcpdump -i lo -tnlA "udp and port 54321"
 
 ...
@@ -70,7 +70,7 @@ E..*..@.@..............1...)Hello, World!
 5. Reply from Server
 
 `tabA`
-```
+```bash
 $ nc -ulnv 127.0.0.1 54321
 
 ...
@@ -80,14 +80,14 @@ Reply, World!
 ```
 
 `tabB`
-```
+```bash
 $ nc -u 127.0.0.1 54321
 Hello, World!
 Reply, World!
 ```
 
 `tabC`
-```
+```bash
 $ sudo tcpdump -i lo -tnlA "udp and port 54321"
 
 ...

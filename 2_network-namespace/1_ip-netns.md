@@ -12,22 +12,21 @@ Common operations:
 
 ## example
 1. Create Network Namespace
-```
+```bash
 $ sudo ip netns add helloworld
 $ ip netns list
 helloworld
 ```
 
 2. Execute command in Created one.
-```
+```bash
 $ sudo ip netns exec helloworld ip address show
 1: lo: <LOOPBACK> mtu 65536 qdisc noop state DOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 $ sudo ip netns exec helloworld ip route show
-$
 ```
 
 3. Delete Network Namespace
-```
+```bash
 $ sudo ip netns delete helloworld
 ```

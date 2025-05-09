@@ -9,7 +9,7 @@ The address space is divided into network and host portions using a subnet mask 
 - Host identifier = remaining bits after the network portion.
 
 Example calculation for `192.168.1.10/24`:
-```
+```bash
 IP   192.168.1.10  → 11000000.10101000.00000001.00001010
 Mask 255.255.255.0 → 11111111.11111111.11111111.00000000
 &    192.168.1.0   → 11000000.10101000.00000001.00000000

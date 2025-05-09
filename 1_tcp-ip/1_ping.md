@@ -22,6 +22,7 @@ rtt min/avg/max/mdev = 4.692/10.396/18.886/6.120 ms
 
 An IP address is unique on the Internet, meaning there are no duplicate IP addresses. Therefore, `8.8.8.8` represents Google's public DNS server.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Only global IP addresses should be unique on the Internet.
+>
 > Other IP addresses, such as private IPs used in closed networks (home, organization, etc.), may be duplicated.

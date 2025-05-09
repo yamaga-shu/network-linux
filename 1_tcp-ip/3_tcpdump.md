@@ -21,7 +21,7 @@ Common options:
 3. `ping -c 3 8.8.8.8`
 
 `tab A`
-```
+```bash
 PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 64 bytes from 8.8.8.8: icmp_seq=1 ttl=119 time=7.04 ms
 64 bytes from 8.8.8.8: icmp_seq=2 ttl=119 time=5.00 ms
@@ -33,7 +33,7 @@ rtt min/avg/max/mdev = 4.997/6.561/7.646/1.133 ms
 ```
 
 `tab B`
-```
+```bash
 wlan0 Out IP 100.64.1.24 > 8.8.8.8: ICMP echo request, id 30456, seq 1, length 64
 wlan0 In  IP 8.8.8.8 > 100.64.1.24: ICMP echo reply, id 30456, seq 1, length 64
 wlan0 Out IP 100.64.1.24 > 8.8.8.8: ICMP echo request, id 30456, seq 2, length 64
@@ -45,7 +45,7 @@ wlan0 In  IP 8.8.8.8 > 100.64.1.24: ICMP echo reply, id 30456, seq 3, length 64
 4. `ping -c 3 127.0.0.1`
 
 `tab A`
-```
+```bash
 PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
 64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.063 ms
 64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.040 ms
@@ -57,7 +57,7 @@ rtt min/avg/max/mdev = 0.036/0.046/0.063/0.011 ms
 ```
 
 `tab B`
-```
+```bash
 lo    In  IP 127.0.0.1 > 127.0.0.1: ICMP echo request, id 30462, seq 1, length 64
 lo    In  IP 127.0.0.1 > 127.0.0.1: ICMP echo reply, id 30462, seq 1, length 64
 lo    In  IP 127.0.0.1 > 127.0.0.1: ICMP echo request, id 30462, seq 2, length 64
@@ -67,10 +67,10 @@ lo    In  IP 127.0.0.1 > 127.0.0.1: ICMP echo reply, id 30462, seq 3, length 64
 ```
 
 - Running `sudo tcpdump -tn -i any icmp` captures all ICMP packets on every interface, printing numeric addresses only and disabling DNS lookups.
-- Each output line follows the pattern:  
+- Each output line follows the pattern:
   `<interface> <direction> IP <source> > <destination>: ICMP <type>, id <id>, seq <seq>, length <length>`
 - In the first example (ping to 8.8.8.8), `Out` entries are the echo requests and `In` entries are the replies on the `wlan0` interface.
 - In the second example (ping to 127.0.0.1), both request and reply stay on the loopback interface (`lo`), so all packets are labeled `In` on `lo`.
 
-> [!NOTE]  
+> [!NOTE]
 > 127.0.0.1 is the loopback (localhost) address, so ping round‑trip times are very short.

@@ -13,13 +13,13 @@ Common operations:
 
 ## example
 1. Create Network Namespace
-```
+```bash
 $ sudo ip netns add ns1
 $ sudo ip netns add ns2
 ```
 
 2. Create veth(Virtual Ethernet Device)
-```
+```bash
 $ sudo ip link add ns1-veth0 type veth peer name ns2-veth0
 $ ip link show | grep veth
 8: ns2-veth0@ns1-veth0: <BROADCAST,MULTICAST,M-DOWN> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
@@ -27,7 +27,7 @@ $ ip link show | grep veth
 ```
 
 3. Attach veth on Network Namespace
-```
+```bash
 $ sudo ip link set ns1-veth0 netns ns1
 $ sudo ip link set ns2-veth0 netns ns2
 $ ip link show | grep veth
@@ -40,13 +40,13 @@ $ sudo ip netns exec ns2 ip link show | grep veth
 ![Network veth Diagram](./assets/ip-link-veth.drawio.png)
 
 4. Set IP address on each veth
-```
+```bash
 $ sudo ip netns exec ns1 ip address add 192.0.2.1/24 dev ns1-veth0
 $ sudo ip netns exec ns2 ip address add 192.0.2.2/24 dev ns2-veth0
 ```
 
 5. Set veth's state UP
-```
+```bash
 $ sudo ip netns exec ns1 ip link show ns1-veth0 | grep state
 9: ns1-veth0@if8: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
 $ sudo ip netns exec ns2 ip link show ns2-veth0 | grep state
@@ -62,7 +62,7 @@ $ sudo ip netns exec ns2 ip link show ns2-veth0 | grep state
 ```
 
 6. Check Connection
-```
+```bash
 $ sudo ip netns exec ns1 ping -c 3 192.0.2.2
 PING 192.0.2.2 (192.0.2.2) 56(84) bytes of data.
 64 bytes from 192.0.2.2: icmp_seq=1 ttl=64 time=0.071 ms
