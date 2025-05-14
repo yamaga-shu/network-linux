@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 
 import socket
-from pydoc import cli
 
 def send_msg(sock, msg):
     """ソケットに指定したバイト列を書き込む関数"""
